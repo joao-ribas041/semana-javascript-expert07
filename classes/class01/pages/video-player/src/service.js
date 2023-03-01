@@ -1,5 +1,5 @@
 export default class Service {
-    constructor ({ }) {
+    constructor ({ faceLandmarksDetection }) {
         
     }
 }
