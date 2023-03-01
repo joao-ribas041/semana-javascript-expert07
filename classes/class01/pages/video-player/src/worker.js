@@ -8,11 +8,15 @@ import Service from "./service.js"
 // no worker é self
 
 const {tf, faceLandmarksDetection } = self
-tf.setbackeng('webgl')
-
-const service = new Service(
+tf.setBackend('webgl')
+const service = new Service({
     faceLandmarksDetection
-)
+})
+console.log('loading tf model')
+await service.loadModel()
+console.log('tf model loaded!')
+postMessage('READY')
+
 onmessage = ({ data }) => {
     console.log('worker!', data)
     postMessage({
