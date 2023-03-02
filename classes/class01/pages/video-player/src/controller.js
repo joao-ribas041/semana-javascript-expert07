@@ -28,6 +28,7 @@ export default class Controller {
             }
             const blinked = data.blinked
             this.#blinkCounter += blinked
+            this.#view.togglePlayVideo()
             console.log('blinked', blinked)
         }
 
@@ -48,10 +49,12 @@ export default class Controller {
         this.#worker.send(img)
         this.log(`detecting eye blink...`)
 
-        setTimeout(() => this.loop, 100);
+        setTimeout(() => this.loop(), 100);
     }
     log(text) {
-        this.#view.log(`Logger: ${text}`)
+        const times = `     - blinked times: ${this.#blinkCounter}`
+        const right = `     - blinked right: `
+        this.#view.log(`status: ${text}`.concat(this.#blinkCounter? times : ""))
     }
     onBtnStart() {
         this.log('initializing detection...')

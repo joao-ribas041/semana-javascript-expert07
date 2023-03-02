@@ -1,3 +1,6 @@
+import { prepareRunChecker } from "../../../lib/shared/util.js"
+const { shouldRun } = prepareRunChecker({ timerDelay: 500 })
+
 const EAR_THRESHOLD = 0.27;
 
 export default class Service {
@@ -50,8 +53,8 @@ export default class Service {
     
             // True if the eye is closed
             const blinked = leftEAR <= EAR_THRESHOLD && rightEAR <= EAR_THRESHOLD
-            if(!blinked) continue;
-
+            if(!blinked) continue
+            if(!shouldRun()) continue
             return blinked
         }
         return false
