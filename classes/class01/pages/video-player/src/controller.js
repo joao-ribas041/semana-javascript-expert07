@@ -54,6 +54,7 @@ export default class Controller {
     log(text) {
         const times = `     - blinked times: ${this.#blinkCounter}`
         const right = `     - blinked right: `
+        const left = `  	- blinked left:`
         this.#view.log(`status: ${text}`.concat(this.#blinkCounter? times : ""))
     }
     onBtnStart() {
