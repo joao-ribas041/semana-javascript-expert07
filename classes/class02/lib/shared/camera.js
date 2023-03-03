@@ -23,10 +23,10 @@ export default class Camera {
         const camera = new Camera()
         camera.video.srcObject = stream
 
-        /* // debug reasons
+        // debug reasons
         camera.video.height = 640
         camera.video.width = 820
-        document.body.append(camera.video) */
+        document.body.append(camera.video)
 
         // aguarda pela camera!
         await new Promise((resolve) => {
