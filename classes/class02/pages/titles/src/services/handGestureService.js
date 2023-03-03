@@ -23,6 +23,7 @@ export default class HandGestureService {
     }
 
     async * detectGestures(predictions) {
+
         for(const hand of predictions) {
             if(!hand.keypoints3D) continue
 
@@ -33,7 +34,8 @@ export default class HandGestureService {
                 ( previous, current) => (previous.score > current.score) ? previous:current
             )
             const {x, y} = hand.keypoints.find(keypoint => keypoint.name === 'index_finger_tip')
-            console.log('detected',  gestureStrings[result.name], x, y)
+                yield { event: result.name, x, y}
+            console.log('detected',  gestureStrings[result.name])
         }
     }
 
